@@ -82,8 +82,8 @@ public class Basket {
                 count + " шт. - " + price + " руб. - " + weight + " гр.";
         totalPrice = totalPrice + count * price;
         totalWeight = totalWeight + count * weight;
-        itemsTotalPrice = itemsTotalPrice + count * price;
-        itemsTotalCount = itemsTotalCount + count;
+        increaseTotalPrice(count * price);
+        increaseTotalCount(count);
     }
 
     public static int getItemsTotalCount() {

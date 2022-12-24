@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        Company company = new Company();
+        Company company = new Company(15000000);
         hireEmployees(company);
         printHighestSalaries(company);
         printLowestSalaries(company);

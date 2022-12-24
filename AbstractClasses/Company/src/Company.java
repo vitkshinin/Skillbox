@@ -2,6 +2,20 @@ import java.util.*;
 
 public class Company {
 
+    public static double income;
+
+    public Company(int income) {
+        Company.income = income;
+    }
+
+    public void setIncome(double income) {
+        Company.income = income;
+    }
+
+    public static int getIncome () {
+        return (int) income;
+    }
+
     private final List<Employee> employees = new ArrayList<Employee>();
 
     public void hire(Employee employee) {
@@ -16,10 +30,6 @@ public class Company {
         employees.remove(employee);
     }
 
-    public static int totalIncome() {
-        return 15000000;
-    }
-
     public List<Employee> getTopSalaryStaff(int count) {
         return getFilteredLimitedList(count, new Comparator<Employee>() {
             public int compare(Employee o1, Employee o2) {
@@ -31,7 +41,7 @@ public class Company {
     public List<Employee> getLowestSalaryStaff(int count) {
         return getFilteredLimitedList(count, new Comparator<Employee>() {
             public int compare(Employee o1, Employee o2) {
-                return (int) (o2.getMonthSalary() - o1.getMonthSalary());
+                return (int) (o1.getMonthSalary() - o2.getMonthSalary());
             }
         });
     }

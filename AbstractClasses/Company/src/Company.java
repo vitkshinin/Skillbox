@@ -2,18 +2,18 @@ import java.util.*;
 
 public class Company {
 
-    public static double income;
+    public double income;
 
-    public Company(int income) {
-        Company.income = income;
+    public Company(double income) {
+        this.income = income;
+    }
+
+    public double getIncome() {
+        return income;
     }
 
     public void setIncome(double income) {
-        Company.income = income;
-    }
-
-    public static int getIncome () {
-        return (int) income;
+        this.income = income;
     }
 
     private final List<Employee> employees = new ArrayList<Employee>();

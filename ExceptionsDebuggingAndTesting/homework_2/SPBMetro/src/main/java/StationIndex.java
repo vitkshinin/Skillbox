@@ -5,9 +5,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class StationIndex {
-    private final Map<Integer, Line> number2line;
-    private final TreeSet<Station> stations;
-    private final Map<Station, TreeSet<Station>> connections;
+    HashMap<Integer, Line> number2line;
+    TreeSet<Station> stations;
+    TreeMap<Station, TreeSet<Station>> connections;
 
     public StationIndex() {
         number2line = new HashMap<>();
@@ -15,17 +15,19 @@ public class StationIndex {
         connections = new TreeMap<>();
     }
 
-    public void addStation(Station station) {
+    public void addStation(Station station)
+    {
         stations.add(station);
     }
 
-    public void addLine(Line line) {
+    public void addLine(Line line)
+    {
         number2line.put(line.getNumber(), line);
     }
 
     public void addConnection(List<Station> stations) {
-        for (Station station : stations) {
-            if (!connections.containsKey(station)) {
+        for(Station station : stations) {
+            if(!connections.containsKey(station)) {
                 connections.put(station, new TreeSet<>());
             }
             TreeSet<Station> connectedStations = connections.get(station);
@@ -34,13 +36,14 @@ public class StationIndex {
         }
     }
 
-    public Line getLine(int number) {
+    public Line getLine(int number)
+    {
         return number2line.get(number);
     }
 
     public Station getStation(String name) {
-        for (Station station : stations) {
-            if (station.getName().equalsIgnoreCase(name)) {
+        for(Station station : stations) {
+            if(station.getName().equalsIgnoreCase(name)) {
                 return station;
             }
         }
@@ -54,7 +57,9 @@ public class StationIndex {
     }
 
     public Set<Station> getConnectedStations(Station station) {
-        return connections.containsKey(station) ?
-                connections.get(station) : new TreeSet<>();
+        if(connections.containsKey(station)) {
+            return connections.get(station);
+        }
+        return new TreeSet<>();
     }
 }
